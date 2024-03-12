@@ -8,37 +8,37 @@
 <body>
 <div class="center">
     <h2>User info</h2>
-    <form th:action="@{/admin/updateInfo}" th:method="POST" th:object="${newUser}">
+    <form th:action="@{/admin/updateInfo}" th:method="POST" th:object="${user}">
         <input type="hidden" th:field="*{id}" th:value="*{getId()}">
         <table class="table">
             <tr>
                 <td>Name:</td>
                 <td><label>
-                    <input type="text" th:field="*{firstName}" th:value="${newUser.firstName}"/>
+                    <input type="text" th:field="*{firstName}" th:value="${user.firstName}"/>
                 </label></td>
             </tr>
             <tr>
                 <td>Surname:</td>
                 <td><label>
-                    <input type="text" th:field="*{lastName}" th:value="${newUser.lastName}"/>
+                    <input type="text" th:field="*{lastName}" th:value="${user.lastName}"/>
                 </label></td>
             </tr>
             <tr>
                 <td>Username:</td>
                 <td><label>
-                    <input type="text" th:field="*{username}" th:value="${newUser.username}"/>
+                    <input type="text" th:field="*{username}" th:value="${user.username}"/>
                 </label></td>
             </tr>
             <tr>
                 <td>Email:</td>
                 <td><label>
-                    <input type="text" th:field="*{email}" th:value="${newUser.email}"/>
+                    <input type="text" th:field="*{email}" th:value="${user.email}"/>
                 </label></td>
             </tr>
             <tr>
                 <td>Password</td>
                 <td><label>
-                    <input type="text" th:field="*{password}" th:value="${newUser.password}"/>
+                    <input type="text" th:field="*{password}" th:value="${user.password}"/>
                 </label></td>
             </tr>
             <tr>
@@ -57,5 +57,9 @@
         </table>
     </form>
 </div>
+<br>
+<form  th:action="@{/logout}" th:method="POST">
+    <input type="submit" value="Logout!"/>
+</form>
 </body>
 </html>

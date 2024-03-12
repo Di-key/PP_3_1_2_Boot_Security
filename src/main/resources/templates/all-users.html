@@ -32,7 +32,7 @@
 
         <td class="tg-action">
           <div>
-            <a class="link-button" th:href="@{/admin/findUser(userID=${usr.id})}">Update</a>
+            <a class="link-button" th:href="@{/admin/findUser(username=${usr.username})}">Update</a>
           </div>
           <div>
             <a class="link-button" th:href="@{/admin/deleteUser(userID=${usr.id})}">Delete</a>
@@ -42,8 +42,13 @@
     </th:block>
     </tbody>
   </table>
+
 </div>
 <input type="button" value="Add User"
        onclick="window.location.href = 'addNewUser'"/>
+<br>
+<form  th:action="@{/logout}" th:method="POST">
+  <input type="submit" value="Logout!"/>
+</form>
 </body>
 </html>

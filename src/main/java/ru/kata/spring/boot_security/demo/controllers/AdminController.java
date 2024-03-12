@@ -20,13 +20,13 @@ public class AdminController {
         this.roleService = roleService;
     }
 
-    @GetMapping()
+    @GetMapping
     public String getAllUsers(Model model) {
         List<User> allUsers = userService.readAllUsers();
         model.addAttribute("all", allUsers);
         return "all-users";
     }
-//нет
+
     @GetMapping("/addNewUser")
     public String newUser(Model model) {
         User user = new User();
@@ -34,13 +34,13 @@ public class AdminController {
         model.addAttribute("allRoles", roleService.allRoles());
         return "user-create";
     }
-//хз
+
     @PostMapping("/saveUser")
     public String create(@ModelAttribute("newUser") User user) {
         userService.create(user);
         return "redirect:/admin";
     }
-//нет
+
     @PostMapping("/updateInfo")
     public String updateUser(@ModelAttribute("newUser") User user) {
         userService.update(user);
@@ -48,16 +48,15 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    //работает
+
     @GetMapping("/findUser")
-    public String findUser(@RequestParam("userID") Long id, Model model) {
-        User user = userService.findUser(id);
-        model.addAttribute("newUser", user);
+    public String findUser(@RequestParam("username") String username, Model model) {
+        model.addAttribute("user", userService.findByUsername(username));
         model.addAttribute("roles", roleService.findAll());
         return "user-info";
     }
 
-    //deleteUser работает
+    //deleteUser
     @GetMapping("/deleteUser")
     public String deleteUser(@RequestParam("userID") Long id) {
         userService.delete(id);
