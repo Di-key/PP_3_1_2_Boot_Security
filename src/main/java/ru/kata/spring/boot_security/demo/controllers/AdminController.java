@@ -31,7 +31,7 @@ public class AdminController {
     public String newUser(Model model) {
         User user = new User();
         model.addAttribute("userAdd", user);
-        model.addAttribute("allRoles", roleService.allRoles());
+        model.addAttribute("allRoles", roleService.getAllRoles());
         return "user-create";
     }
 
@@ -52,7 +52,7 @@ public class AdminController {
     @GetMapping("/findUser")
     public String findUser(@RequestParam("username") String username, Model model) {
         model.addAttribute("user", userService.findByUsername(username));
-        model.addAttribute("roles", roleService.findAll());
+        model.addAttribute("roles", roleService.getAllRoles());
         return "user-info";
     }
 
